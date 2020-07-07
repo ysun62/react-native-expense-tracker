@@ -6,6 +6,7 @@ import {
   StatusBar,
   View,
   ScrollView,
+  KeyboardAvoidingView,
 } from "react-native";
 import uuid from "react-native-uuid";
 
@@ -50,18 +51,23 @@ export default function App() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.scrollView}>
-        <Header />
-        <View style={styles.bodyWrapper}>
-          <Balance transactions={transactions} />
-          <IncomeExpenses transactions={transactions} />
-          <TransactionList
-            transactions={transactions}
-            deleteTransaction={deleteTransaction}
-          />
-          <AddTransaction addTransaction={addTransaction} />
-        </View>
-      </ScrollView>
+      <KeyboardAvoidingView
+        style={{ flex: 1 }}
+        behavior={Platform.OS == "ios" ? "padding" : "height"}
+      >
+        <ScrollView style={styles.scrollView}>
+          <Header />
+          <View style={styles.bodyWrapper}>
+            <Balance transactions={transactions} />
+            <IncomeExpenses transactions={transactions} />
+            <TransactionList
+              transactions={transactions}
+              deleteTransaction={deleteTransaction}
+            />
+            <AddTransaction addTransaction={addTransaction} />
+          </View>
+        </ScrollView>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 }
