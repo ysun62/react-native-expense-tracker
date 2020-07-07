@@ -58,8 +58,8 @@ const styles = StyleSheet.create({
   input: {
     borderRadius: 2,
     backgroundColor: "white",
-    paddingVertical: 5,
-    paddingHorizontal: 10,
+    paddingVertical: 8,
+    paddingHorizontal: 12,
   },
   mtb: {
     marginTop: 10,

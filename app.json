@@ -22,6 +22,7 @@
     "web": {
       "favicon": "./app/assets/favicon.png"
     },
-    "description": ""
+    "description": "A toy project to get familiar with React Native. It allows you to track your income and expense.",
+    "githubUrl": "https://github.com/ysun62/React-Native-Expense-Tracker"
   }
 }

@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
   },
   viewWrapper: {
     flexDirection: "row",
+    alignItems: "center",
   },
   listItemView: {
     flexDirection: "row",
