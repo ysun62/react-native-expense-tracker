@@ -20,16 +20,16 @@ export default function App() {
     {
       id: 1,
       amount: 1400,
-      name: "Cash",
+      name: "Deposit",
     },
     {
       id: 2,
-      amount: 100,
-      name: "Check",
+      amount: -20,
+      name: "Dinner",
     },
     {
       id: 3,
-      amount: -200,
+      amount: -500,
       name: "Camera",
     },
   ]);
