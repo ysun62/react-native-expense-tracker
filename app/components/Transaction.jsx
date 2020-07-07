@@ -1,15 +1,15 @@
 import React from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, Alert } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 
 import { numberWithCommas } from "../utils/format";
 
 export default function TransactionList({ item, deleteTransaction }) {
-  let sign = item.amount < 0 ? "-" : "+";
+  let sign = +item.amount < 0 ? "-" : "+";
 
   return (
     <TouchableOpacity
-      style={[styles.listItem, item.amount < 0 ? styles.minus : styles.plus]}
+      style={[styles.listItem, +item.amount < 0 ? styles.minus : styles.plus]}
     >
       <View style={styles.listItemView}>
         <View style={styles.viewWrapper}>
@@ -17,13 +17,22 @@ export default function TransactionList({ item, deleteTransaction }) {
             name="remove"
             size={20}
             color="firebrick"
-            onPress={() => deleteTransaction(item.id)}
+            onPress={() =>
+              Alert.alert(
+                "Delete Transaction",
+                "Are you sure you want to delete this transaction?",
+                [
+                  { text: "Yes", onPress: () => deleteTransaction(item.id) },
+                  { text: "No" },
+                ]
+              )
+            }
           />
           <Text style={[styles.ml, styles.color]}>{item.name}</Text>
         </View>
         <Text style={styles.color}>
           {" "}
-          {sign}${numberWithCommas(Math.abs(item.amount).toFixed(2))}
+          {sign}${numberWithCommas(Math.abs(+item.amount).toFixed(2))}
         </Text>
       </View>
     </TouchableOpacity>

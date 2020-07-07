@@ -10,7 +10,10 @@ import {
 import { heading } from "../styles/heading";
 
 export default function TransactionList({ addTransaction }) {
-  const [transaction, setTransaction] = useState({ name: "", amount: "" });
+  const [transaction, setTransaction] = useState({
+    name: "",
+    amount: "",
+  });
 
   const handleNameChange = (textValue) => {
     setTransaction((prevTransaction) => ({
@@ -22,8 +25,12 @@ export default function TransactionList({ addTransaction }) {
   const handleAmountChange = (textValue) => {
     setTransaction((prevTransaction) => ({
       ...prevTransaction,
-      amount: +textValue,
+      amount: textValue,
     }));
+  };
+
+  const clearForm = () => {
+    setTransaction({ name: "", amount: "" });
   };
 
   return (
@@ -34,6 +41,7 @@ export default function TransactionList({ addTransaction }) {
         placeholder="Enter Name..."
         style={styles.input}
         onChangeText={handleNameChange}
+        value={transaction.name}
       />
       <Text
         style={styles.mtb}
@@ -43,10 +51,14 @@ export default function TransactionList({ addTransaction }) {
         style={styles.input}
         keyboardType="numeric"
         onChangeText={handleAmountChange}
+        value={transaction.amount}
       />
       <TouchableOpacity
         style={styles.btn}
-        onPress={(e) => addTransaction(e, transaction)}
+        onPress={(e) => {
+          clearForm();
+          addTransaction(e, transaction);
+        }}
       >
         <Text style={styles.btnText}>Add transaction</Text>
       </TouchableOpacity>

@@ -7,7 +7,7 @@ import { numberWithCommas } from "../utils/format";
 export default function Balance({ transactions }) {
   let balance = 0;
 
-  transactions.map((transaction) => (balance += transaction.amount));
+  transactions.map((transaction) => (balance += +transaction.amount));
 
   return (
     <View style={styles.container}>

@@ -8,12 +8,15 @@ export default function TransactionList({ transactions, deleteTransaction }) {
   return (
     <View style={styles.container}>
       <Text style={[heading.h4, heading.subTitle]}>History</Text>
-      <FlatList
-        data={transactions}
-        renderItem={({ item }) => (
-          <Transaction item={item} deleteTransaction={deleteTransaction} />
-        )}
-      />
+      {transactions.map((item) => {
+        return (
+          <Transaction
+            key={item.id}
+            item={item}
+            deleteTransaction={deleteTransaction}
+          />
+        );
+      })}
     </View>
   );
 }

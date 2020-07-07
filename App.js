@@ -19,17 +19,17 @@ export default function App() {
   const [transactions, setTransactions] = useState([
     {
       id: 1,
-      amount: 1400,
+      amount: "1400",
       name: "Deposit",
     },
     {
       id: 2,
-      amount: -20,
+      amount: "-20",
       name: "Dinner",
     },
     {
       id: 3,
-      amount: -500,
+      amount: "-500",
       name: "Camera",
     },
   ]);

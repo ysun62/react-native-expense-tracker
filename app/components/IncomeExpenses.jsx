@@ -9,9 +9,9 @@ export default function IncomeExpenses({ transactions }) {
     income = 0;
 
   transactions.map((transaction) =>
-    transaction.amount < 0
-      ? (expense += transaction.amount)
-      : (income += transaction.amount)
+    +transaction.amount < 0
+      ? (expense += +transaction.amount)
+      : (income += +transaction.amount)
   );
 
   return (
